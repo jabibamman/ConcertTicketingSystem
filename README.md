@@ -77,8 +77,16 @@ Vous devrez utiliser les concepts et techniques appris en cours, comme les struc
 2. **Configurer l'environnement :**
    - Installez Java 23.
    - Configurez votre IDE (IntelliJ IDEA recommandé).
+   - Avoir Docker installé sur votre machine.
 
 3. Lancer le projet :
+
+   - Assurez-vous que Docker est en cours d'exécution.
+   - Faites la commande suivante pour lancer le serveur de base de données :
+     ```bash
+     docker-compose up -d
+     ``
+   L'user et le mot de passe de la base de données sont respectivement `admin` et `admin`.
 
    - Le point d'entrée se trouve dans Main.java.
    - Exécutez le fichier Main.java pour commencer.
