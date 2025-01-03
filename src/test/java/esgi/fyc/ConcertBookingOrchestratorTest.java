@@ -15,13 +15,14 @@ import esgi.fyc.service.ConcertBookingOrchestrator;
 
 public class ConcertBookingOrchestratorTest {
     
+    // Résultat attendu : 1200 réservations réussies et 50 non dispo
     @Test
     void testConcurrentBooking() {
-        ConcertBookingOrchestrator orchestrator = new ConcertBookingOrchestrator(100, 10);
+        ConcertBookingOrchestrator orchestrator = new ConcertBookingOrchestrator(1200, 50);
         List<CompletableFuture<Boolean>> futures = new ArrayList<>();
         Long concertId = 1L;
         
-        for (int i = 0; i < 150; i++) {
+        for (int i = 0; i < 1250; i++) {
             User user = new User();  
             user.setId(ThreadLocalRandom.current().nextInt(1, 3));
             user.setName("User" + i);
@@ -45,6 +46,6 @@ public class ConcertBookingOrchestratorTest {
             .filter(success -> success)
             .count();
         
-        assertEquals(100, successfulBookings);
+        assertEquals(1200, successfulBookings);
     }
 }
