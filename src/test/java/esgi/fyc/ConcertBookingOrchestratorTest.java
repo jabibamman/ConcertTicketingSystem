@@ -6,14 +6,16 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import esgi.fyc.entity.User;
 import esgi.fyc.entity.UserRequest;
 import esgi.fyc.service.ConcertBookingOrchestrator;
 
-public class ConcertBookingOrchestratorTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+class ConcertBookingOrchestratorTest {
     
     // Résultat attendu : 1200 réservations réussies et 50 non dispo
     @Test

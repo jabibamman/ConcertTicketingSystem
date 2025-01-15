@@ -3,6 +3,7 @@ package esgi.fyc.entity;
 import java.time.LocalDateTime;
 
 import lombok.Data;
+
 @Data
 public class Reservation {
     private int id;

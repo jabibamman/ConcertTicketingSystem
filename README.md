@@ -4,7 +4,9 @@
 
 Dans ce projet, vous allez développer un **système de billetterie multithreadé** en Java. L'objectif est de gérer la réservation de billets pour un concert en simulant un grand nombre d'utilisateurs essayant d'acheter des billets en même temps.
 
-Vous devrez utiliser les concepts et techniques appris en cours, comme les structures concurrentes (`AtomicInteger`, `ConcurrentHashMap`) et les outils de synchronisation (`Semaphore`, `ReadWriteLock`), pour garantir l'intégrité des données et la fluidité du système.
+Vous devrez utiliser les concepts et techniques appris en cours, comme les structures 
+concurrentes et les outils de synchronisation (`Semaphore`, `ReadWriteLock`), pour garantir 
+l'intégrité des données et la fluidité du système.
 
 ---
 
@@ -19,7 +21,6 @@ Vous devrez utiliser les concepts et techniques appris en cours, comme les struc
    - Gérer les réservations concurrentes en évitant les conditions de course.
    - Mettre en œuvre des mécanismes avancés comme :
       - `AtomicInteger` pour le suivi global des billets.
-      - `ConcurrentHashMap` pour suivre les utilisateurs et leurs réservations.
       - `Semaphore` pour limiter le nombre d'utilisateurs simultanés.
       - `PriorityBlockingQueue` pour gérer les utilisateurs VIP avec une priorité plus élevée.
       - `ReadWriteLock` pour autoriser plusieurs lectures tout en verrouillant les écritures.
@@ -40,9 +41,12 @@ Vous devrez utiliser les concepts et techniques appris en cours, comme les struc
 - **ReadWriteLock** pour la synchronisation des accès partagés (3 points).
 
 ### Techniques Bonus (5 points) :
-- **StampedLock** pour une gestion flexible des verrous (2 points).
-- **CompletableFuture** pour un traitement asynchrone des réservations (2 points).
+- **StampedLock** qui remplacerait **ReadWriteLock** pour une gestion flexible des verrous (2 
+  points + 3 donné car le lock est mis en place).
+- **CompletableFuture** pour un traitement asynchrone des réservations (1 point).
 - **Exchanger** pour synchroniser des données entre threads (1 point).
+- **ConcurrentHashMap** pour suivre les utilisateurs et leurs réservations. (1 point)
+
 
 ---
 
