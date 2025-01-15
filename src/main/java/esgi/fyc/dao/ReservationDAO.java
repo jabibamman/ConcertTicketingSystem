@@ -10,8 +10,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code ReservationDAO} class provides methods to interact with the database
+ * for operations related to the {@link Reservation} entity.
+ * This includes adding new reservations, retrieving reservations for a specific concert,
+ * and calculating the total number of reservations for a concert.
+ * <p>
+ * This class uses {@link DatabaseConnection} for establishing database connections.
+ * </p>
+ */
 public class ReservationDAO {
 
+    /**
+     * Adds a new reservation to the database.
+     *
+     * @param reservation the {@link Reservation} object containing the details of the reservation to add.
+     * @throws SQLException if a database access error occurs or the query fails.
+     */
     public void addReservation(Reservation reservation) {
         String query = "INSERT INTO reservation (user_id, concert_id, ticket_number) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -25,6 +40,14 @@ public class ReservationDAO {
         }
     }
 
+    /**
+     * Retrieves all reservations for a specific concert.
+     *
+     * @param concertId the ID of the concert for which reservations are to be retrieved.
+     * @return a {@link List} of {@link Reservation} objects for the specified concert.
+     *         If no reservations are found, an empty list is returned.
+     * @throws SQLException if a database access error occurs or the query fails.
+     */
     public List<Reservation> getReservationsForConcert(int concertId) {
         String query = "SELECT * FROM reservation WHERE concert_id = ?";
         List<Reservation> reservations = new ArrayList<>();
@@ -47,6 +70,13 @@ public class ReservationDAO {
         return reservations;
     }
 
+    /**
+     * Retrieves the total number of reservations for a specific concert.
+     *
+     * @param concertId the ID of the concert for which the total number of reservations is to be calculated.
+     * @return the total number of reservations for the specified concert. If no reservations are found, returns 0.
+     * @throws SQLException if a database access error occurs or the query fails.
+     */
     public int getTotalReservationsForConcert(int concertId) {
         String query = "SELECT COUNT(*) FROM reservation WHERE concert_id = ?";
         try (Connection connection = DatabaseConnection.getConnection();

@@ -29,6 +29,29 @@ l'intégrité des données et la fluidité du système.
    - Traiter les exceptions éventuelles (réservations impossibles, threads interrompus).
    - Tester votre système avec plusieurs threads pour simuler un grand nombre d'utilisateurs.
 
+### Notes Importantes
+- DAO, Entities et Repository sont déjà fournis. Vous n’avez pas besoin de modifier ces fichiers, 
+sauf si nécessaire pour une fonctionnalité avancée.
+-  Créer et compléter les services manquants. Cela inclut la logique de réservation, la gestion 
+  de la concurrence, et les notifications.
+
+### Développement des Services
+
+Vous trouverez dans le projet des classes partiellement implémentées. Voici les instructions pour compléter les services nécessaires :
+
+1.	TicketingService (à créer)
+Ce service sera responsable de la gestion des billets (suivi des billets restants, réservation), 
+     vous devrez :
+- Utiliser un AtomicInteger pour suivre le nombre de billets disponibles.
+- Implémenter une logique qui empêche les conditions de course lors des réservations concurrentes.
+
+2.	NotificationService (à créer)
+Ce service gérera l’envoi des notifications aux utilisateurs après la réservation. Vous pouvez utiliser CompletableFuture pour rendre ce service asynchrone.
+
+3.	ConcertBookingOrchestrator (fourni, à compléter)
+Cette classe contient déjà une structure de base, mais vous devez :
+- Implémenter la méthode processBookingRequest pour coordonner la réservation en utilisant 
+     `TicketingService`, `NotificationService`, et un `Semaphore`.
 ---
 
 ## Barème d'Évaluation (Sur 20 points)
@@ -46,7 +69,6 @@ l'intégrité des données et la fluidité du système.
 - **CompletableFuture** pour un traitement asynchrone des réservations (1 point).
 - **Exchanger** pour synchroniser des données entre threads (1 point).
 - **ConcurrentHashMap** pour suivre les utilisateurs et leurs réservations. (1 point)
-
 
 ---
 
