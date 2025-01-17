@@ -7,8 +7,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The {@code ConcertDAO} class provides methods to interact with the database
+ * for operations related to the {@link Concert} entity.
+ * This includes adding new concerts and retrieving all concerts.
+ * <p>
+ * This class relies on {@link DatabaseConnection} for database connections.
+ * </p>
+ */
 public class ConcertDAO {
 
+
+    /**
+     * Adds a new concert to the database.
+     *
+     * @param concert the {@link Concert} object containing the details of the concert to add.
+     * @throws SQLException if a database access error occurs or the query fails.
+     */
     public void addConcert(Concert concert) {
         String query = "INSERT INTO concert (name, date, total_tickets, remaining_tickets) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -23,6 +38,13 @@ public class ConcertDAO {
         }
     }
 
+    /**
+     * Retrieves all concerts from the database.
+     *
+     * @return a {@link List} of {@link Concert} objects representing all concerts in the database.
+     *         If no concerts are found, an empty list is returned.
+     * @throws SQLException if a database access error occurs or the query fails.
+     */
     public List<Concert> getAllConcerts() {
         String query = "SELECT * FROM concert";
         List<Concert> concerts = new ArrayList<>();
